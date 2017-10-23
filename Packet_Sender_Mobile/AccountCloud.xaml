@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Packet_Sender_Mobile.AccountCloud">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout VerticalOptions="StartAndExpand">
+                <Label Text="Username" />
+                <Entry x:Name="usernameEntry" Placeholder="username" />
+                <Label Text="Password" />
+                <Entry x:Name="passwordEntry" IsPassword="true" />
+                <Label x:Name="confirmLabel" Text="Confirm Password" />
+                <Entry x:Name="passwordEntryConfirm" IsPassword="true" />
+                <Button Text="Login" x:Name="LoginButton" Clicked="LoginButton_ClickedAsync"/>
+                <Label x:Name="messageLabel" />
+                <Button x:Name="createAccountButton" Text="Create Account" Clicked="createAccountButton_Clicked" />
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

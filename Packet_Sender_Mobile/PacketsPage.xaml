@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Packet_Sender_Mobile.PacketsPage"
+             >
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="sendButton" Clicked="sendButton_Clicked" Text="Send" />
+            <Button x:Name="deleteButton" Clicked="deleteButton_Clicked" Text="Delete" />
+            <Button x:Name="modifyButton" Clicked="modifyButton_Clicked" Text="Modify" />
+            <Button x:Name="newButton" Clicked="newButton_Clicked" Text="New" />
+        </StackLayout>
+        <ListView x:Name="packetListView" HasUnevenRows="true" ItemSelected="packetListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5" Orientation="Horizontal">
+                                <Image 
+							    WidthRequest="30"
+							    HeightRequest="30"
+							    Aspect="AspectFill"
+							    Source="{Binding packetimagesend}" />
+
+
+                            <StackLayout Padding="5"  Orientation="Vertical">
+
+
+                                        <Label 
+                                    Text="{Binding nameshort}" 
+                                    FontSize="Medium" 
+                                    VerticalOptions="Center"
+                                    />
+                                
+                                    <StackLayout Orientation="Horizontal">
+                                                <Label 
+							            Text="IP:" 
+							            FontSize="Medium" 
+							            VerticalOptions="Center"
+							            />
+                                                <Label 
+							            Text="{Binding toip}" 
+							            FontSize="Medium" 
+							            VerticalOptions="Center"
+							            />
+                                                <Label 
+							            Text="Port:" 
+							            FontSize="Medium" 
+							            VerticalOptions="Center"
+							            />
+                                                <Label 
+							            Text="{Binding toport}" 
+							            FontSize="Medium" 
+							            VerticalOptions="Center"
+							            />
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

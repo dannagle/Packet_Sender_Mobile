@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Packet_Sender_Mobile"
+            x:Class="Packet_Sender_Mobile.CloudUI">
+    <local:AccountCloud Title="Account" Icon="icon.png" />
+    <local:ImportCloud Title="Import" Icon="icon.png" />
+    <local:SaveCloud Title="Save/Share" Icon="icon.png" />
+</TabbedPage>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Packet_Sender_Mobile.ImportCloud">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout VerticalOptions="StartAndExpand">
+                <Entry x:Name="urlEntry" Placeholder="URL" />
+                <Button x:Name="urlImportButton" Text="Import From URL" Clicked="urlImportButton_ClickedAsync" />
+            </StackLayout>
+
+            <ListView x:Name="packetSetJSONListView" HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="5"  Orientation="Vertical">
+                                <StackLayout Padding="5"  Orientation="Horizontal">
+                                    <Label  Text="Name:"  VerticalOptions="Center" />
+                                    <Label  Text="{Binding name}" Font="Bold,20" VerticalOptions="Center" />
+                                </StackLayout>
+                                <StackLayout Padding="5"  Orientation="Horizontal">
+                                    <Label  Text="{Binding count}" Font="Bold,20" VerticalOptions="Center" />
+                                    <Label  Text="Packets - "  FontSize="Medium"  VerticalOptions="Center" />
+                                    <Label  Text="{Binding lastupdate}"  FontSize="Medium"  VerticalOptions="Center" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout VerticalOptions="StartAndExpand">
+                <Button x:Name="importSetButton" Text="Import Set" Clicked="importSetButton_ClickedAsync" />
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

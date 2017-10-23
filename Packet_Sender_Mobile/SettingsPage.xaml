@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Packet_Sender_Mobile.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Packet Sender Cloud" Clicked="OnImportClicked" />
+
+            <TableView Intent="Form">
+                <TableRoot>
+                    <TableSection Title="Server Ports">
+                        <EntryCell x:Name="tcpport" Label="TCP Server Port" Keyboard="Numeric" />
+                        <EntryCell x:Name="udpport" Label="UDP Server Port" Keyboard="Numeric"  />
+                    </TableSection>
+                    <TableSection Title="Other Settings">
+                        <SwitchCell x:Name="logTrafficToggle" Text="Log Traffic" On="True" />
+                    </TableSection>
+
+                    <TableSection>
+                        <ViewCell>
+                            <Button x:Name="SettingsSave" Text="Save" Clicked="SettingsSave_Clicked" />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

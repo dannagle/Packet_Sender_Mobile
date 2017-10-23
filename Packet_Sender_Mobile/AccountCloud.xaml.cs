@@ -56,7 +56,7 @@ namespace Packet_Sender_Mobile
 
         private async Task LoginButton_ClickedAsync(object sender, EventArgs e)
         {
-            string username = usernameEntry.Text.Trim();
+            string username = usernameEntry.Text.Trim().ToLower();
             string password = passwordEntry.Text;
             string passwordconfirm = passwordEntryConfirm.Text;
             if (String.IsNullOrWhiteSpace(username))
@@ -95,6 +95,8 @@ namespace Packet_Sender_Mobile
 
                             if (_packetSets.Count > 0)
                             {
+                                SettingsPage.UserName = username;
+                                SettingsPage.UserPass = password;
                                 Debug.WriteLine("First set is " + _packetSets[0].name);
                                 _packetsjson = JsonConvert.DeserializeObject<List<PacketJSON>>(_packetSets[0].packetjson);
                                 Debug.WriteLine("This packet set contains : " + _packetsjson.Count);

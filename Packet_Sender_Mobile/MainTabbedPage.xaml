@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Packet_Sender_Mobile"
              x:Class="Packet_Sender_Mobile.MainTabbedPage">
   <!--Pages can be added as references or inline-->
-    <local:PacketsPage Title="Packets" Icon="icon.png" />
-    <local:TrafficPage Title="Traffic" Icon="icon.png" />
-    <local:SettingsPage Title="Settings" Icon="icon.png" />
+    <local:PacketsPage Title="Packets" Icon="pslogo144.png" />
+    <local:TrafficPage Title="Traffic" Icon="server_network" />
+    <local:SettingsPage Title="Settings" Icon="settings" />
 </TabbedPage>

@@ -137,6 +137,14 @@
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_1024x1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_48x48.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_256x256.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_128x128.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_64x64.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_32x32.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_16x16.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon_32x32_2.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

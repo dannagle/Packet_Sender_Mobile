@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="984" key="view" image="icon_256x256.png" highlightedImage="icon_256x256.png">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="984" key="view" image="icon_1024x1024_2.png" highlightedImage="icon_1024x1024_2.png">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
@@ -28,5 +28,6 @@
     </scenes>
     <resources>
         <image name="icon_256x256.png" width="256" height="256"/>
+        <image name="icon_1024x1024_2.png" width="1024" height="1024"/>
     </resources>
 </document>

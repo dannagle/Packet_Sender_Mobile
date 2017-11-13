@@ -2,9 +2,31 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Packet_Sender_Mobile"
-             x:Class="Packet_Sender_Mobile.MainTabbedPage">
+             x:Class="Packet_Sender_Mobile.MainTabbedPage"
+            >
   <!--Pages can be added as references or inline-->
-    <local:PacketsPage Title="Packets" Icon="pslogo144.png" />
-    <local:TrafficPage Title="Traffic" Icon="server_network" />
-    <local:SettingsPage Title="Settings" Icon="settings" />
+    <local:PacketsPage Title="Packets">
+        <local:PacketsPage.Icon>
+            <OnPlatform x:Key="Icon" x:TypeArguments="FileImageSource">
+                <OnPlatform.iOS>ios_packets_icon.png</OnPlatform.iOS>
+                <OnPlatform.Android>pslogo144.png</OnPlatform.Android>
+            </OnPlatform>
+        </local:PacketsPage.Icon>
+    </local:PacketsPage>
+    <local:TrafficPage Title="Traffic">
+        <local:TrafficPage.Icon>
+            <OnPlatform x:Key="Icon" x:TypeArguments="FileImageSource">
+                <OnPlatform.iOS>ios_traffic_icon.png</OnPlatform.iOS>
+                <OnPlatform.Android>server_network</OnPlatform.Android>
+            </OnPlatform>
+        </local:TrafficPage.Icon>
+    </local:TrafficPage>
+    <local:SettingsPage Title="Settings">
+        <local:SettingsPage.Icon>
+            <OnPlatform x:Key="Icon" x:TypeArguments="FileImageSource">
+                <OnPlatform.iOS>ios_settings_icon.png</OnPlatform.iOS>
+                <OnPlatform.Android>settings</OnPlatform.Android>
+            </OnPlatform>
+        </local:SettingsPage.Icon>
+    </local:SettingsPage>
 </TabbedPage>

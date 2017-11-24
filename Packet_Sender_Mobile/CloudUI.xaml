@@ -3,7 +3,28 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Packet_Sender_Mobile"
             x:Class="Packet_Sender_Mobile.CloudUI">
-    <local:AccountCloud Title="Account" Icon="icon.png" />
-    <local:ImportCloud Title="Import" Icon="icon.png" />
-    <local:SaveCloud Title="Save/Share" Icon="icon.png" />
+    <local:AccountCloud Title="Account">
+        <local:AccountCloud.Icon>
+            <OnPlatform x:Key="Icon" x:TypeArguments="FileImageSource">
+                <OnPlatform.iOS>ios_packets_icon.png</OnPlatform.iOS>
+                <OnPlatform.Android>icon.png</OnPlatform.Android>
+            </OnPlatform>
+        </local:AccountCloud.Icon>        
+    </local:AccountCloud>
+    <local:ImportCloud Title="Import">
+        <local:ImportCloud.Icon>
+            <OnPlatform x:Key="Icon" x:TypeArguments="FileImageSource">
+                <OnPlatform.iOS>ios_packets_icon.png</OnPlatform.iOS>
+                <OnPlatform.Android>icon.png</OnPlatform.Android>
+            </OnPlatform>
+        </local:ImportCloud.Icon>        
+    </local:ImportCloud>
+    <local:SaveCloud Title="Save/Share">
+        <local:SaveCloud.Icon>
+            <OnPlatform x:Key="Icon" x:TypeArguments="FileImageSource">
+                <OnPlatform.iOS>ios_packets_icon.png</OnPlatform.iOS>
+                <OnPlatform.Android>icon.png</OnPlatform.Android>
+            </OnPlatform>
+        </local:SaveCloud.Icon>        
+    </local:SaveCloud>
 </TabbedPage>

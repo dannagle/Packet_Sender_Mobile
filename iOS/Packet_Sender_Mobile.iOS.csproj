@@ -193,6 +193,15 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_256x256.png" />
     <BundleResource Include="Resources\icon_1024x1024_2.png" />
+    <BundleResource Include="Resources\ios_settings_icon%403x.png" />
+    <BundleResource Include="Resources\ios_settings_icon%402x.png" />
+    <BundleResource Include="Resources\ios_settings_icon.png" />
+    <BundleResource Include="Resources\ios_traffic_icon.png" />
+    <BundleResource Include="Resources\ios_traffic_icon%402x.png" />
+    <BundleResource Include="Resources\ios_traffic_icon%403x.png" />
+    <BundleResource Include="Resources\ios_packets_icon%403x.png" />
+    <BundleResource Include="Resources\ios_packets_icon%402x.png" />
+    <BundleResource Include="Resources\ios_packets_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets')" />

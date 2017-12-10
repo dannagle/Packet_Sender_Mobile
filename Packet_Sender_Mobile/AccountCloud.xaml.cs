@@ -183,6 +183,13 @@ namespace Packet_Sender_Mobile
 
         }
 
+
+        private async void cancelButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+
+        }
+
         private void createAccountButton_Clicked(object sender, EventArgs e)
         {
             confirmLabel.IsVisible = !confirmLabel.IsVisible;

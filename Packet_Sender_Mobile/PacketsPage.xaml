@@ -13,11 +13,11 @@
         </OnPlatform>
     </ContentPage.Padding>
     <StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Button x:Name="sendButton" Clicked="sendButton_Clicked" Text="Send" />
-            <Button x:Name="deleteButton" Clicked="deleteButton_Clicked" Text="Delete" />
-            <Button x:Name="modifyButton" Clicked="modifyButton_Clicked" Text="Modify" />
-            <Button x:Name="newButton" Clicked="newButton_Clicked" Text="New" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand"  >
+            <Button HorizontalOptions="FillAndExpand" x:Name="sendButton" Clicked="sendButton_Clicked" Text="Send" />
+            <Button HorizontalOptions="FillAndExpand"  x:Name="deleteButton" Clicked="deleteButton_Clicked" Text="Delete" />
+            <Button HorizontalOptions="FillAndExpand"  x:Name="modifyButton" Clicked="modifyButton_Clicked" Text="Modify" />
+            <Button HorizontalOptions="FillAndExpand"  x:Name="newButton" Clicked="newButton_Clicked" Text="New" />
         </StackLayout>
         <ListView x:Name="packetListView" HasUnevenRows="true" ItemSelected="packetListView_ItemSelected">
             <ListView.ItemTemplate>

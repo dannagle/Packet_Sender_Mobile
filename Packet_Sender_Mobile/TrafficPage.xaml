@@ -15,9 +15,9 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="clearButton" Clicked="clearButton_Clicked" Text="Clear" />
-                <Button x:Name="saveButton" Clicked="saveButton_ClickedAsync" Text="Save" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                <Button HorizontalOptions="FillAndExpand"  x:Name="clearButton" Clicked="clearButton_Clicked" Text="Clear" />
+                <Button HorizontalOptions="FillAndExpand"  x:Name="saveButton" Clicked="saveButton_ClickedAsync" Text="Save" />
             </StackLayout>
             <ListView x:Name="trafficListView" HasUnevenRows="true" ItemSelected="trafficListView_ItemSelected">
                 <ListView.ItemTemplate>

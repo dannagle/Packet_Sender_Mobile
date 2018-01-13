@@ -4,12 +4,12 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("Packet_Sender_Mobile")]
+[assembly: AssemblyTitle("Packet Sender")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NagleCode, LLC")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Dan Nagle")]
+[assembly: AssemblyCopyright("NagleCode, LLC")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

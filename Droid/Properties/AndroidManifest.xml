@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.packetsender.app.Packet_Sender_Mobile">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.packetsender.mobile">
 	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="Packet_Sender_Mobile">
-	</application>
+	<application android:label="Packet Sender"></application>
 </manifest>

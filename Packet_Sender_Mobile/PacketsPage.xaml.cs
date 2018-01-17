@@ -299,6 +299,31 @@ namespace Packet_Sender_Mobile
                     await tcp.ConnectAsync(sendpacket.toip, sendpacket.toport);
                     await tcp.WriteStream.WriteAsync(bytesToSend, 0, bytesToSend.Length);
                     await tcp.DisconnectAsync();
+
+                    /*
+                    // wait a little before reading
+                    var bytesRecv = new byte[20];
+                    //tcp.ReadStream.ReadTimeout = 200;
+                    //not async, so it can time out. 
+                    await Task.Delay(TimeSpan.FromMilliseconds(00));
+                    if (tcp.ReadStream.Length > 0)
+                    {
+                        int bytesRead = await tcp.ReadStream.ReadAsync(bytesRecv, 0, 20);
+                        if (bytesRead > 0)
+                        {
+                            Packet receivepkt = new Packet();
+                            receivepkt.toip = sendpacket.fromip;
+                            receivepkt.fromip = sendpacket.toip;
+                            receivepkt.fromport = sendpacket.toport;
+                            Array.Resize(ref bytesRecv, bytesRead);
+                            receivepkt.hex = Packet.byteArrayToHex(bytesRecv);
+                            MessagingCenter.Send(this, Events.NEW_TRAFFIC_PACKET, receivepkt);
+                        }
+
+                    }
+                    */
+
+
                 }
                 if (sendpacket.isUDP())
                 {

@@ -45,7 +45,7 @@ namespace Packet_Sender_Mobile
         {
             if (_logtraffice) {
                 Debug.WriteLine("Packet from has " + newpkt.fromip);
-                _trafficpackets.Add(newpkt);
+                _trafficpackets.Insert(0, newpkt); //(newpkt);
             }
         }
 
@@ -66,6 +66,10 @@ namespace Packet_Sender_Mobile
 
             }
             savepacket.name = string.Empty;
+            if(savepacket.toip == "You") {
+                savepacket.toip = savepacket.fromip;
+                savepacket.toport = savepacket.fromport;
+            }
 
             Debug.WriteLine("saveButton_Clicked " + savepacket.name + " " + savepacket.method);
             //Navigation.PushAsync((new PacketEditPage()));

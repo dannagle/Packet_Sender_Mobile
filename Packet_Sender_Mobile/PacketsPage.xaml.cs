@@ -294,6 +294,9 @@ namespace Packet_Sender_Mobile
 
             try
             {
+                sendpacket.error = "";
+                await tcp.DisconnectAsync();
+
                 if (sendpacket.isTCP())
                 {
                     await tcp.ConnectAsync(sendpacket.toip, sendpacket.toport);

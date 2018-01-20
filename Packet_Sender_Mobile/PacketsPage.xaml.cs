@@ -233,12 +233,9 @@ namespace Packet_Sender_Mobile
             Debug.WriteLine("Updating main list");
 
 
-            for (int i = 0; i < _thepackets.Count(); i++)
-            {
-                _connection.DeleteAsync(_thepackets[i]);
 
-			}
-
+            _connection.DropTableAsync<Packet>().Wait();
+            _connection.CreateTableAsync<Packet>().Wait();
 			_thepackets.Clear();
 
             for (int i = 0; i < newList.Count(); i++)

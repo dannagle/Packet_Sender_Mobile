@@ -39,7 +39,7 @@ namespace Packet_Sender_Mobile
 
         private void OnNewPacketSetListAsync(AccountCloud source, List<PacketSetJSON> newList)
         {
-            Debug.WriteLine("List now has " + newList.Count);
+            Debug.WriteLine("IC:List now has " + newList.Count);
 
             _thepackets.Clear();
 
@@ -48,21 +48,21 @@ namespace Packet_Sender_Mobile
                 _thepackets.Add(newList[i]);
             }
 
-            Debug.WriteLine("Updated list now has " + _thepackets.Count);
+            Debug.WriteLine("IC:Updated list now has " + _thepackets.Count);
 
             //packetSetJSONListView.ItemsSource = null;
             //packetSetJSONListView.ItemsSource = _thepackets;
 
             //packetListView.ItemsSource = newList;
 
-            Debug.WriteLine("Finished");
+            Debug.WriteLine("IC:Finished");
 
 
         }
 
         private async Task urlImportButton_ClickedAsync(object sender, EventArgs e)
         {
-            Debug.WriteLine("Import from URL");
+            Debug.WriteLine("IC:Import from URL");
 
             string urlpath = urlEntry.Text + "/json";
 
@@ -80,39 +80,22 @@ namespace Packet_Sender_Mobile
                     {
                         _thepackets.Clear();
                         _thepackets.Add(_packetSets[0]);
-                        await Task.Run(() =>
-                        {
-                            Device.BeginInvokeOnMainThread(async () => {
-                                await DisplayAlert("Success", "Found a packet set.", "OK");
-                            });
-                        });
+                        await DisplayAlert("Success", "Found a packet set.", "OK");
 
 
                     }
                 }
                 catch (Exception eJson)
                 {
-                    Debug.WriteLine("Exception : " + eJson.Message);
-                    Debug.WriteLine("Exception : " + eJson.InnerException.Message);
-
-                    await Task.Run(() =>
-                    {
-                        Device.BeginInvokeOnMainThread(async () => {
-                            await DisplayAlert("Error", "Could find any packets.", "OK");
-                        });
-                    });
+                    Debug.WriteLine("IC:Exception : " + eJson.Message);
+                    Debug.WriteLine("IC:Exception : " + eJson.InnerException.Message);
+                    await DisplayAlert("Error", "Could find any packets.", "OK");
                 }
             }
             else
             {
 
-                await Task.Run(() =>
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await DisplayAlert("Error", "Connection Error.", "OK");
-                    });
-                });
+                await DisplayAlert("Error", "Connection Error.", "OK");
             }
 
         }

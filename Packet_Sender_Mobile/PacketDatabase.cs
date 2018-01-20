@@ -46,6 +46,13 @@ namespace Packet_Sender_Mobile
 
         }
 
+        public void TruncatePackets()
+        {
+            database.DropTableAsync<Packet>().Wait();
+            database.CreateTableAsync<Packet>().Wait();
+        }
+
+
 		public Task<int> DeletePacketAsync(Packet item)
 		{
 			return database.DeleteAsync(item);

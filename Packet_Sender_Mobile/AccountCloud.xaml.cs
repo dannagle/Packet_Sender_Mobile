@@ -85,7 +85,7 @@ namespace Packet_Sender_Mobile
 
                     //Xamarin cannot read cloudflare cert. This works with Let's Encrypt cert.
                     var url = "https://cloud.packetsender.com/";
-                    var response = http.PostAsync(url, encodedContent).Result;
+                    var response = await http.PostAsync(url, encodedContent).ConfigureAwait(false);
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
                         json = await response.Content.ReadAsStringAsync();
@@ -98,20 +98,32 @@ namespace Packet_Sender_Mobile
                             {
                                 SettingsPage.UserName = username;
                                 SettingsPage.UserPass = password;
-                                Debug.WriteLine("First set is " + _packetSets[0].name);
                                 _packetsjson = JsonConvert.DeserializeObject<List<PacketJSON>>(_packetSets[0].packetjson);
-                                Debug.WriteLine("This packet set contains : " + _packetsjson.Count);
+                                while((_packetSets.Count > 1) && (_packetsjson.Count == 0)) {
+                                    _packetSets.RemoveAt(0);                                    
+                                    _packetsjson = JsonConvert.DeserializeObject<List<PacketJSON>>(_packetSets[0].packetjson);
+                                }
+                                Debug.WriteLine("AC:First set is " + _packetSets[0].name);
+                                Debug.WriteLine("AC:This packet set contains : " + _packetsjson.Count);
                                 if (_packetsjson.Count > 0)
                                 {
-                                    Debug.WriteLine("First packet is " + _packetsjson[0].name);
+                                    Debug.WriteLine("AC:First packet is " + _packetsjson[0].name);
+
+                                    //DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK").Wait();
 
 
-                                    MessagingCenter.Send(this, Events.FOUND_PACKETSET_LIST, _packetSets);
 
-                                    await DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK");
-                                    var masterPage = this.Parent as TabbedPage;
-                                    masterPage.CurrentPage = masterPage.Children[1]; //change to middle tab
-                                    Debug.WriteLine("Finished");
+                                    Device.BeginInvokeOnMainThread(async () => {
+                                        MessagingCenter.Send(this, Events.FOUND_PACKETSET_LIST, _packetSets);
+                                        await DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK");
+                                        var masterPage = this.Parent as TabbedPage;
+                                        masterPage.CurrentPage = masterPage.Children[1]; //change to middle tab
+                                        Debug.WriteLine("Finished");
+                                    });
+
+                                    //
+                                    //
+                                    Debug.WriteLine("AC:Finished");
 
                                     return;
                                 }
@@ -129,8 +141,8 @@ namespace Packet_Sender_Mobile
                             await DisplayAlert("Error", "Could not log in.", "OK");
 
 
-                            Debug.WriteLine("Exception : " + eJson.Message);
-                            Debug.WriteLine("Exception : " + eJson.InnerException.Message);
+                            Debug.WriteLine("AC:Exception : " + eJson.Message);
+                            Debug.WriteLine("AC:Exception : " + eJson.InnerException.Message);
                             return;
                         }
 
@@ -144,8 +156,8 @@ namespace Packet_Sender_Mobile
                 catch (HttpRequestException eHttp)
                 {
                     await DisplayAlert("Error", "Could not connect to cloud server.", "OK");
-                    Debug.WriteLine("Exception : " + eHttp.Message);
-                    Debug.WriteLine("Exception : " + eHttp.InnerException.Message);
+                    Debug.WriteLine("AC:Exception : " + eHttp.Message);
+                    Debug.WriteLine("AC:Exception : " + eHttp.InnerException.Message);
                     return;
                 }
 

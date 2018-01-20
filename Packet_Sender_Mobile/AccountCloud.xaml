@@ -17,11 +17,32 @@
 
             <StackLayout VerticalOptions="StartAndExpand">
                 <Label Text="Username" />
-                <Entry x:Name="usernameEntry" Placeholder="username" />
+                <Entry x:Name="usernameEntry" Placeholder="username">
+                 <Entry.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                                      <On Platform="iOS">50</On>
+                                      <On Platform="Android,Windows">50</On>
+                         </OnPlatform>
+                 </Entry.HeightRequest>
+                </Entry>
                 <Label Text="Password" />
-                <Entry x:Name="passwordEntry" IsPassword="true" />
+                <Entry x:Name="passwordEntry" IsPassword="true">
+                 <Entry.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                                      <On Platform="iOS">50</On>
+                                      <On Platform="Android,Windows">50</On>
+                         </OnPlatform>
+                 </Entry.HeightRequest>
+                </Entry>                    
                 <Label x:Name="confirmLabel" Text="Confirm Password" />
-                <Entry x:Name="passwordEntryConfirm" IsPassword="true" />
+                <Entry x:Name="passwordEntryConfirm" IsPassword="true">
+                 <Entry.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double">
+                                      <On Platform="iOS">50</On>
+                                      <On Platform="Android,Windows">50</On>
+                         </OnPlatform>
+                 </Entry.HeightRequest>
+                </Entry>                    
                 <Button Text="Login" x:Name="LoginButton" Clicked="LoginButton_ClickedAsync"/>
                 <Label x:Name="messageLabel" />
                 <Button x:Name="createAccountButton" Text="Create Account" Clicked="createAccountButton_Clicked" />

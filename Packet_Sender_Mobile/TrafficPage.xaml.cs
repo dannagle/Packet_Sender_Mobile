@@ -45,7 +45,11 @@ namespace Packet_Sender_Mobile
         {
             if (_logtraffice) {
                 Debug.WriteLine("Packet from has " + newpkt.fromip);
-                _trafficpackets.Insert(0, newpkt); //(newpkt);
+                if(_trafficpackets.Count == 0) {
+                    _trafficpackets.Add(newpkt); //(newpkt);
+                } else {
+                    _trafficpackets.Insert(0, newpkt); //(newpkt);
+                }
             }
         }
 

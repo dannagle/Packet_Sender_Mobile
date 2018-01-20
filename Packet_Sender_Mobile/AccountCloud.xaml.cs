@@ -56,6 +56,7 @@ namespace Packet_Sender_Mobile
 
         private async Task LoginButton_ClickedAsync(object sender, EventArgs e)
         {
+
             string username = usernameEntry.Text.Trim().ToLower();
             string password = passwordEntry.Text;
             string passwordconfirm = passwordEntryConfirm.Text;
@@ -84,10 +85,10 @@ namespace Packet_Sender_Mobile
 
                     //Xamarin cannot read cloudflare cert. This works with Let's Encrypt cert.
                     var url = "https://cloud.packetsender.com/";
-                    var response = await http.PostAsync(url, encodedContent).ConfigureAwait(false);
+                    var response = http.PostAsync(url, encodedContent).Result;
                     if (response.StatusCode == HttpStatusCode.OK)
                     {
-                        json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        json = await response.Content.ReadAsStringAsync();
 
                         try
                         {
@@ -105,42 +106,27 @@ namespace Packet_Sender_Mobile
                                     Debug.WriteLine("First packet is " + _packetsjson[0].name);
 
 
-
-
                                     MessagingCenter.Send(this, Events.FOUND_PACKETSET_LIST, _packetSets);
 
-                                    await Task.Run(() =>
-                                    {
-                                        Device.BeginInvokeOnMainThread(async () => {
-                                            await DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK");
-                                            var masterPage = this.Parent as TabbedPage;
-                                            masterPage.CurrentPage = masterPage.Children[1]; //change to middle tab
-                                            Debug.WriteLine("Finished");
-                                        });
-                                    });
+                                    await DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK");
+                                    var masterPage = this.Parent as TabbedPage;
+                                    masterPage.CurrentPage = masterPage.Children[1]; //change to middle tab
+                                    Debug.WriteLine("Finished");
+
                                     return;
                                 }
                             }
                             else
                             {
-                                await Task.Run(() =>
-                                {
-                                    Device.BeginInvokeOnMainThread(async () => {
-                                        await DisplayAlert("Error", "There were no saved packets.", "OK");
-                                    });
-                                });
+                                await DisplayAlert("Error", "There were no saved packets.", "OK");
                                 return;
                             }
                         }
                         catch (Exception eJson)
                         {
 
-                            await Task.Run(() =>
-                            {
-                                Device.BeginInvokeOnMainThread(async () => {
-                                    await DisplayAlert("Error", "Could not log in.", "OK");
-                                });
-                            });
+
+                            await DisplayAlert("Error", "Could not log in.", "OK");
 
 
                             Debug.WriteLine("Exception : " + eJson.Message);
@@ -150,13 +136,7 @@ namespace Packet_Sender_Mobile
 
                     }
 
-                    await Task.Run(() =>
-                    {
-                        Device.BeginInvokeOnMainThread(async () => {
-                            await DisplayAlert("Error", "Did not find in packet sets.", "OK");
-                        });
-                    });
-
+                    await DisplayAlert("Error", "Did not find in packet sets.", "OK");
                     return;
 
 

@@ -202,6 +202,36 @@
     <BundleResource Include="Resources\ios_packets_icon%403x.png" />
     <BundleResource Include="Resources\ios_packets_icon%402x.png" />
     <BundleResource Include="Resources\ios_packets_icon.png" />
+    <BundleResource Include="Resources\tx%403x.png" />
+    <BundleResource Include="Resources\tx%402x.png" />
+    <BundleResource Include="Resources\tx_udp%403x.png" />
+    <BundleResource Include="Resources\tx_udp%402x.png" />
+    <BundleResource Include="Resources\tx_tcp%403x.png" />
+    <BundleResource Include="Resources\tx_tcp%402x.png" />
+    <BundleResource Include="Resources\tx_ssl%403x.png" />
+    <BundleResource Include="Resources\tx_ssl%402x.png" />
+    <BundleResource Include="Resources\rx%403x.png" />
+    <BundleResource Include="Resources\rx%402x.png" />
+    <BundleResource Include="Resources\rx_yellow%403x.png" />
+    <BundleResource Include="Resources\rx_yellow%402x.png" />
+    <BundleResource Include="Resources\rx_white%403x.png" />
+    <BundleResource Include="Resources\rx_white%402x.png" />
+    <BundleResource Include="Resources\rx_udp%403x.png" />
+    <BundleResource Include="Resources\rx_udp%402x.png" />
+    <BundleResource Include="Resources\rx_tcp%403x.png" />
+    <BundleResource Include="Resources\rx_tcp%402x.png" />
+    <BundleResource Include="Resources\rx_ssl%403x.png" />
+    <BundleResource Include="Resources\rx_ssl%402x.png" />
+    <BundleResource Include="Resources\tx_udp.png" />
+    <BundleResource Include="Resources\tx_tcp.png" />
+    <BundleResource Include="Resources\tx_ssl.png" />
+    <BundleResource Include="Resources\tx.png" />
+    <BundleResource Include="Resources\rx_yellow.png" />
+    <BundleResource Include="Resources\rx_white.png" />
+    <BundleResource Include="Resources\rx_udp.png" />
+    <BundleResource Include="Resources\rx_tcp.png" />
+    <BundleResource Include="Resources\rx_ssl.png" />
+    <BundleResource Include="Resources\rx.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.4.0.280\build\netstandard1.0\Xamarin.Forms.targets')" />

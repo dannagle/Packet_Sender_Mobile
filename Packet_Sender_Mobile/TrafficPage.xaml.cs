@@ -44,13 +44,18 @@ namespace Packet_Sender_Mobile
         private void OnNewTrafficPacketAsync(PacketsPage source, Packet newpkt)
         {
             if (_logtraffice) {
-                Debug.WriteLine("Packet from has " + newpkt.fromip);
+                Debug.WriteLine("TP:Packet from has " + newpkt.fromip);
                 if(_trafficpackets.Count == 0) {
+                    _trafficpackets = new ObservableCollection<Packet>(new List<Packet>());
                     _trafficpackets.Add(newpkt); //(newpkt);
+                    Debug.WriteLine("TP:Packet added");
+                    trafficListView.ItemsSource = _trafficpackets;
+                    Debug.WriteLine("TP:Packet added done");
                 } else {
                     _trafficpackets.Insert(0, newpkt); //(newpkt);
                 }
             }
+            Debug.WriteLine("TP:Finished OnNewTrafficPacketAsync");
         }
 
         private void clearButton_Clicked(object sender, EventArgs e)
@@ -65,7 +70,7 @@ namespace Packet_Sender_Mobile
 
             if (savepacket == null)
             {
-                Debug.WriteLine("saveButton_Clicked with null");
+                Debug.WriteLine("TP:saveButton_Clicked with null");
                 return;
 
             }
@@ -75,7 +80,7 @@ namespace Packet_Sender_Mobile
                 savepacket.toport = savepacket.fromport;
             }
 
-            Debug.WriteLine("saveButton_Clicked " + savepacket.name + " " + savepacket.method);
+            Debug.WriteLine("TP:saveButton_Clicked " + savepacket.name + " " + savepacket.method);
             //Navigation.PushAsync((new PacketEditPage()));
             await Navigation.PushModalAsync(new PacketEditPage(savepacket));
 

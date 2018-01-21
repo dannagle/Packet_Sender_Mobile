@@ -195,7 +195,7 @@ namespace Packet_Sender_Mobile
 
         private void OnPacketModified(PacketEditPage source, Packet packet)
         {
-            Debug.WriteLine("Updating main list with " + packet.name + " headed to " + packet.toip);
+            Debug.WriteLine("PP:Updating main list with " + packet.name + " headed to " + packet.toip);
 
             bool found = false;
             for (int i = 0; i < _thepackets.Count(); i++)
@@ -229,8 +229,8 @@ namespace Packet_Sender_Mobile
 
             private void OnNewPacketListAsync(LoginPage source, List<Packet> newList)
         {
-            Debug.WriteLine("List now has " + newList.Count());
-            Debug.WriteLine("Updating main list");
+            Debug.WriteLine("PP:List now has " + newList.Count());
+            Debug.WriteLine("PP:Updating main list");
 
 
 
@@ -251,7 +251,7 @@ namespace Packet_Sender_Mobile
         }
         private void packetListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            Debug.WriteLine("Selected");
+            Debug.WriteLine("PP:Selected");
 
             thepacket = packetListView.SelectedItem as Packet;
 
@@ -272,21 +272,18 @@ namespace Packet_Sender_Mobile
             var sendpacket = packetListView.SelectedItem as Packet;
             if (sendpacket == null)
             {
-                Debug.WriteLine("sendButton_Clicked with null");
+                Debug.WriteLine("PP:sendButton_Clicked with null");
 
             } else {
 
-                Task.Run(() =>
-                {
-                    doSend(sendpacket);
-                });
+                doSend(sendpacket);
             }
 
         }
 
         public async void doSend(Packet sendpacket)
         {
-            Debug.WriteLine($"doSend {sendpacket.method} {sendpacket.toip} {sendpacket.toport} {sendpacket.ascii}");
+            Debug.WriteLine($"PP:doSend {sendpacket.method} {sendpacket.toip} {sendpacket.toport} {sendpacket.ascii}");
             byte[] bytesToSend = System.Text.Encoding.UTF8.GetBytes(sendpacket.ascii);
 
             try
@@ -334,27 +331,33 @@ namespace Packet_Sender_Mobile
             catch (Exception eSend)
             {
                 sendpacket.error = "Error: "+eSend.Message;
-                Debug.WriteLine("Exception : " + eSend.Message);
+                Debug.WriteLine("PP:Exception : " + eSend.Message);
             }
 
 
-
-
+            Debug.WriteLine("PP:Before Message");
             MessagingCenter.Send(this, Events.NEW_TRAFFIC_PACKET, sendpacket);
+            Debug.WriteLine("PP:After Message");
+
+
+
+            Debug.WriteLine("PP:Finished");
+
+
 
 
         }
 
         private void deleteButton_Clicked(object sender, EventArgs e)
         {
-            Debug.WriteLine("Need to delete " + thepacket.ascii);
+            Debug.WriteLine("PP:Need to delete " + thepacket.ascii);
 
 			if(_thepackets.IndexOf(thepacket) > -1) {
-				Debug.WriteLine("Deleted packet");
+				Debug.WriteLine("PP:Deleted packet");
 				_thepackets.Remove(thepacket);
                 _connection.DeleteAsync(thepacket);
             } else {
-				Debug.WriteLine("Did not delete packet");
+				Debug.WriteLine("PP:Did not delete packet");
 			}
 
 
@@ -367,12 +370,12 @@ namespace Packet_Sender_Mobile
 			var sendpacket = packetListView.SelectedItem as Packet;
 			if (sendpacket == null)
 			{
-				Debug.WriteLine("modifyButton_Clicked with null");
+				Debug.WriteLine("PP:modifyButton_Clicked with null");
                 return;
 
 			}
 
-			Debug.WriteLine("modifyButton_Clicked " + sendpacket.name +" " + sendpacket.method);
+			Debug.WriteLine("PP:modifyButton_Clicked " + sendpacket.name +" " + sendpacket.method);
             //Navigation.PushAsync((new PacketEditPage()));
             await Navigation.PushModalAsync(new PacketEditPage(sendpacket));
 
@@ -381,7 +384,7 @@ namespace Packet_Sender_Mobile
         private async void newButton_Clicked(object sender, EventArgs e)
         {
             thepacket = new Packet();
-            Debug.WriteLine("newButton_Clicked");
+            Debug.WriteLine("PP:newButton_Clicked");
             await Navigation.PushModalAsync(new PacketEditPage(thepacket));
         }
     }

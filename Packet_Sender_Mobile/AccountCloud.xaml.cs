@@ -118,7 +118,7 @@ namespace Packet_Sender_Mobile
                                         await DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK");
                                         var masterPage = this.Parent as TabbedPage;
                                         masterPage.CurrentPage = masterPage.Children[1]; //change to middle tab
-                                        Debug.WriteLine("Finished");
+                                        Debug.WriteLine("AC:Finished");
                                     });
 
                                     //

@@ -602,21 +602,24 @@ namespace Packet_Sender_Mobile
             hex = hex.Replace("\r", "");
             hex = hex.Replace("\t", "");
             hex = hex.Replace(" ", "");
+            hex = hex.Trim().ToUpper();
 
             if (hex.Length % 2 == 1) {
                 //prepend a 0
                 hex = "0" + hex;
             }
-            
 
-            byte[] arr = new byte[hex.Length >> 1];
 
-            for (int i = 0; i < hex.Length >> 1; ++i)
+            List<byte> arr = new List<byte>();
+
+            for (int i = 0; i < hex.Length; i+=2)
             {
-                arr[i] = (byte)((GetHexVal(hex[i << 1]) << 4) + (GetHexVal(hex[(i << 1) + 1])));
+                int firstnibble = (GetHexVal(hex[i])) << 4;
+                int lastnibble = GetHexVal(hex[i+1]);
+                arr.Add((byte) (firstnibble | lastnibble));
             }
 
-            return arr;
+            return arr.ToArray();
 
 
         }
@@ -627,15 +630,44 @@ namespace Packet_Sender_Mobile
         }
 
 
-        public static int GetHexVal(char hex)
+        private static int GetHexVal(char hex)
         {
-            int val = (int)hex;
-            //For uppercase A-F letters:
-            return val - (val < 58 ? 48 : 55);
-            //For lowercase a-f letters:
-            //return val - (val < 58 ? 48 : 87);
-            //Or the two combined, but a bit slower:
-            //return val - (val < 58 ? 48 : (val < 97 ? 55 : 87));
+            switch (hex) {
+                case '0':
+                    return 0;
+                case '1':
+                    return 1;
+                case '2':
+                    return 2;
+                case '3':
+                    return 3;
+                case '4':
+                    return 4;
+                case '5':
+                    return 5;
+                case '6':
+                    return 6;
+                case '7':
+                    return 7;
+                case '8':
+                    return 8;
+                case '9':
+                    return 9;
+                case 'A':
+                    return 10;
+                case 'B':
+                    return 11;
+                case 'C':
+                    return 12;
+                case 'D':
+                    return 13;
+                case 'E':
+                    return 14;
+                case 'F':
+                    return 15;
+
+            }
+            return 0;
         }
 
 

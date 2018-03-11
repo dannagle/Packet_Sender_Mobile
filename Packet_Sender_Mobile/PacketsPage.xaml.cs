@@ -284,7 +284,8 @@ namespace Packet_Sender_Mobile
         public async void doSend(Packet sendpacket)
         {
             Debug.WriteLine($"PP:doSend {sendpacket.method} {sendpacket.toip} {sendpacket.toport} {sendpacket.ascii}");
-            byte[] bytesToSend = System.Text.Encoding.UTF8.GetBytes(sendpacket.ascii);
+//            byte[] bytesToSend = System.Text.Encoding.UTF8.GetBytes(sendpacket.ascii);
+            byte[] bytesToSend = sendpacket.getByteArray();
 
             try
             {

@@ -30,7 +30,6 @@ Packet Sender Mobile was developed entirely in C# using Xamarin.Forms
 ### Support
 
 * Twitter: [@NagleCode](http://twitter.com/NagleCode)
-* You may also track this project on [GitHub](http://github.com/dannagle/PacketSender).
 * Email: hello AT packetsender DOT com
 * Connect with me on [LinkedIn](https://www.linkedin.com/in/dannagle/)
 

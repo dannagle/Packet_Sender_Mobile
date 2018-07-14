@@ -36,7 +36,6 @@ namespace Packet_Sender_Mobile
 
 		bool _isDataLoaded;
 
-
 		public PacketsPage()
         {
             InitializeComponent();
@@ -57,6 +56,7 @@ namespace Packet_Sender_Mobile
                 SettingsPage.TCPPort = tcpServer.LocalPort;
 
                 MessagingCenter.Send(this, Events.BOUND_PORTS_CHANGED, 0);
+
             });
 
             
@@ -157,11 +157,11 @@ namespace Packet_Sender_Mobile
             MessagingCenter.Send(this, Events.NEW_TRAFFIC_PACKET, pkt);
         }
 
-
-
         protected override async void OnAppearing()
 		{
-			// In a multi-page app, everytime we come back to this page, OnAppearing
+            Debug.WriteLine("OnAppearing: PacketsPage.xaml.cs");
+
+            // In a multi-page app, everytime we come back to this page, OnAppearing
 			// method is called, but we want to load the data only the first time
 			// this page is loaded. In other words, when we go to ContactDetailPage
 			// and come back, we don't want to reload the data. The data is already
@@ -179,6 +179,29 @@ namespace Packet_Sender_Mobile
 			await LoadData();
 
 			base.OnAppearing();
+
+            //app needs to turn off tcp server. 
+            MessagingCenter.Subscribe<App>(this, Events.APP_RESUME, async app => {
+                //Do something
+                Debug.WriteLine("APP_RESUME: PacketsPage.xaml.cs");
+                await tcpServer.StartListeningAsync(tcpPort);
+                await udpServer.StartListeningAsync(udpPort);
+            });
+
+            MessagingCenter.Subscribe<App>(this, Events.APP_SLEEP, app => {
+                //Do something
+                Debug.WriteLine("APP_SLEEP: PacketsPage.xaml.cs");
+                tcpServer.StopListeningAsync();
+                udpServer.StopListeningAsync();
+            });
+
+            MessagingCenter.Subscribe<App>(this, Events.APP_DISAPPEAR, app => {
+                //Do something
+                Debug.WriteLine("APP_DISAPPEAR: PacketsPage.xaml.cs");
+                tcpServer.StopListeningAsync();
+                udpServer.StopListeningAsync();
+            });
+
 		}
 
 		private async Task LoadData()

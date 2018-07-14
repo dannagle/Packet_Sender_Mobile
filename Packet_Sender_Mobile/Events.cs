@@ -11,5 +11,11 @@ namespace Packet_Sender_Mobile
 
         public static string FOUND_PACKETSET_LIST = "FOUND_PACKETSET_LIST";
 
+        public static string APP_RESUME = "APP_RESUME";
+        public static string APP_SLEEP = "APP_SLEEP";
+        public static string APP_START = "APP_START";
+        public static string APP_DISAPPEAR = "APP_DISAPPEAR";
+        public static string APP_APPEAR = "APP_APPEAR";
+
     }
 }

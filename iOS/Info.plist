@@ -9,9 +9,9 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.packetsender.mobile</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.9</string>
+	<string>1.0.10</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.9</string>
+	<string>1.0.10</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>

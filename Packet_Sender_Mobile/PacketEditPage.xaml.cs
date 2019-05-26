@@ -71,7 +71,10 @@ namespace Packet_Sender_Mobile
 
 
             Debug.WriteLine("Saving ID: " + packet.name + " headed to " + packet.toip);
-            await _connection.InsertOrReplaceAsync(packet);
+            int x = await _connection.InsertOrReplaceAsync(packet);
+            Debug.WriteLine("x = " + x);
+
+
             MessagingCenter.Send(this, Events.PACKET_MODIFIED, packet);
             
 

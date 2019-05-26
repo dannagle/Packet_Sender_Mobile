@@ -355,7 +355,7 @@ namespace Packet_Sender_Mobile
             catch (Exception eSend)
             {
                 sendpacket.error = "Error: "+eSend.Message;
-                Debug.WriteLine("PP:Exception : " + eSend.Message);
+                Debug.WriteLine("PP:Exception : " + eSend.Message + ":" + eSend.GetType());
             }
 
 

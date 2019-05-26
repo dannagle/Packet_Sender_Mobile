@@ -64,7 +64,7 @@ namespace Packet_Sender_Mobile
 
         }
 
-        private async Task saveButton_ClickedAsync(object sender, EventArgs e)
+        private async void saveButton_ClickedAsync(object sender, EventArgs e)
         {
             var savepacket = trafficListView.SelectedItem as Packet;
 

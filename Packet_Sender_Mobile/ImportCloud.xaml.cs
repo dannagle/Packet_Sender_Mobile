@@ -60,7 +60,7 @@ namespace Packet_Sender_Mobile
 
         }
 
-        private async Task urlImportButton_ClickedAsync(object sender, EventArgs e)
+        private async void urlImportButton_ClickedAsync(object sender, EventArgs e)
         {
             Debug.WriteLine("IC:Import from URL");
 
@@ -100,7 +100,7 @@ namespace Packet_Sender_Mobile
 
         }
 
-            private async Task importSetButton_ClickedAsync(object sender, EventArgs e)
+            private async void importSetButton_ClickedAsync(object sender, EventArgs e)
         {
             
             var thepacketset = packetSetJSONListView.SelectedItem as PacketSetJSON;

@@ -54,7 +54,7 @@ namespace Packet_Sender_Mobile
             return !passwordEntryConfirm.IsVisible;
         }
 
-        private async Task LoginButton_ClickedAsync(object sender, EventArgs e)
+        private async void LoginButton_ClickedAsync(object sender, EventArgs e)
         {
 
             string username = usernameEntry.Text.Trim().ToLower();

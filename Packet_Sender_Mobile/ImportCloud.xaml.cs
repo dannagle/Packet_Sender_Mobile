@@ -66,36 +66,70 @@ namespace Packet_Sender_Mobile
 
             string urlpath = urlEntry.Text + "/json";
 
-            var http = new HttpClient();
-            var response = await http.GetAsync(urlpath).ConfigureAwait(false);
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-                try
+            if(!urlpath.StartsWith("http://", StringComparison.Ordinal)) {
+                if (!urlpath.StartsWith("https://", StringComparison.Ordinal))
                 {
-                    _packetSets = JsonConvert.DeserializeObject<List<PacketSetJSON>>(json);
-
-                    if (_packetSets.Count > 0)
-                    {
-                        _thepackets.Clear();
-                        _thepackets.Add(_packetSets[0]);
-                        await DisplayAlert("Success", "Found a packet set.", "OK");
-
-
-                    }
-                }
-                catch (Exception eJson)
-                {
-                    Debug.WriteLine("IC:Exception : " + eJson.Message);
-                    Debug.WriteLine("IC:Exception : " + eJson.InnerException.Message);
-                    await DisplayAlert("Error", "Could find any packets.", "OK");
+                    await DisplayAlert("Error", "URL must start with http or https.", "OK");
+                    return;
                 }
             }
-            else
+
+            //Check URL is valid. 
+
+            var http = new HttpClient();
+
+
+
+            try
+            {
+                var response = await http.GetAsync(urlpath).ConfigureAwait(false);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    string json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                    try
+                    {
+                        _packetSets = JsonConvert.DeserializeObject<List<PacketSetJSON>>(json);
+
+                        if (_packetSets.Count > 0)
+                        {
+                            _thepackets.Clear();
+                            _thepackets.Add(_packetSets[0]);
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                DisplayAlert("Success", "Found a packet set.", "OK");
+
+                            });
+
+
+                        }
+                    }
+                    catch (Exception eJson)
+                    {
+                        Debug.WriteLine("IC:Exception : " + eJson.Message);
+                        Debug.WriteLine("IC:Exception : " + eJson.InnerException.Message);
+
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayAlert("Error", "Could find any packets.", "OK");
+
+                        });
+                    }
+                }
+                else
+                {
+
+                    await DisplayAlert("Error", "Connection Error.", "OK");
+                }
+            } catch (Exception eResponse)
             {
 
-                await DisplayAlert("Error", "Connection Error.", "OK");
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    DisplayAlert("Error", "Problem connecting to " + urlpath, "OK");
+
+                });
+                Debug.WriteLine("IC:Exception : " + eResponse.InnerException.Message);
             }
 
         }

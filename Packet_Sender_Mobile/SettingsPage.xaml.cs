@@ -109,11 +109,41 @@ namespace Packet_Sender_Mobile
 
         private void SettingsSave_Clicked(object sender, EventArgs e)
         {
-            TCPPort = Convert.ToInt32(tcpport.Text);
-            UDPPort = Convert.ToInt32(tcpport.Text);
-            LogTraffic = logTrafficToggle.On;
+            try
+            {
+                string stringTcp = tcpport.Text;
+                string stringUdp = udpport.Text;
 
-            MessagingCenter.Send(this, Events.TRAFFIC_TOGGLED, logTrafficToggle.On);
+
+                Debug.WriteLine("SS:stringTcp:" + stringTcp);
+                Debug.WriteLine("SS:stringUcp:" + stringUdp);
+
+                int tcpcheck = Convert.ToInt32(stringTcp);
+                int udpcheck = Convert.ToInt32(stringUdp);
+                LogTraffic = logTrafficToggle.On;
+
+
+                Debug.WriteLine("SS:TCPPort:" + tcpcheck);
+                Debug.WriteLine("SS:UDPPort:" + udpcheck);
+
+                if (tcpcheck > 0) {
+                    if (udpcheck > 0)
+                    {
+                        TCPPort = tcpcheck;
+                        UDPPort = udpcheck;
+                        MessagingCenter.Send(this, Events.TRAFFIC_TOGGLED, logTrafficToggle.On);
+                        return;
+                    }
+                }
+            } catch (Exception portE) {
+                //nothing
+                Debug.WriteLine("SS:SettingsSave_Clicked:" + portE.InnerException.Message);
+            }
+
+            tcpport.Text = TCPPort + "";
+            udpport.Text = UDPPort + "";
+            DisplayAlert("Error", "Port binding must be 1 or higer", "OK");
+
         }
     }
 }

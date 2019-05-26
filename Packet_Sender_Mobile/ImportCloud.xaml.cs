@@ -69,7 +69,11 @@ namespace Packet_Sender_Mobile
             if(!urlpath.StartsWith("http://", StringComparison.Ordinal)) {
                 if (!urlpath.StartsWith("https://", StringComparison.Ordinal))
                 {
-                    await DisplayAlert("Error", "URL must start with http or https.", "OK");
+
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await DisplayAlert("Error", "URL must start with http or https.", "OK");
+                    });
                     return;
                 }
             }

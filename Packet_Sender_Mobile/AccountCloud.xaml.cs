@@ -60,12 +60,19 @@ namespace Packet_Sender_Mobile
             string passwordconfirm = passwordEntryConfirm.Text;
             if (String.IsNullOrWhiteSpace(username))
             {
-                await DisplayAlert("Error", "Username cannot be blank", "OK");
+
+                Device.BeginInvokeOnMainThread(async () => {
+                    await DisplayAlert("Error", "Username cannot be blank", "OK");
+
+                });
                 return;
             }
             if (String.IsNullOrWhiteSpace(password))
             {
-                await DisplayAlert("Error", "Password cannot be blank", "OK");
+
+                Device.BeginInvokeOnMainThread(async () => {
+                    await DisplayAlert("Error", "Password cannot be blank", "OK");
+                });
                 return;
             }
 
@@ -107,10 +114,6 @@ namespace Packet_Sender_Mobile
                                 {
                                     Debug.WriteLine("AC:First packet is " + _packetsjson[0].name);
 
-                                    //DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK").Wait();
-
-
-
                                     Device.BeginInvokeOnMainThread(async () => {
                                         MessagingCenter.Send(this, Events.FOUND_PACKETSET_LIST, _packetSets);
                                         await DisplayAlert("Success", "Found " + _packetSets.Count + " sets.", "OK");
@@ -128,7 +131,9 @@ namespace Packet_Sender_Mobile
                             }
                             else
                             {
-                                await DisplayAlert("Error", "There were no saved packets.", "OK");
+                                Device.BeginInvokeOnMainThread(async () => {
+                                    await DisplayAlert("Error", "There were no saved packets.", "OK");
+                                });
                                 return;
                             }
                         }
@@ -136,7 +141,9 @@ namespace Packet_Sender_Mobile
                         {
 
 
-                            await DisplayAlert("Error", "Could not log in.", "OK");
+                            Device.BeginInvokeOnMainThread(async () => {
+                                await DisplayAlert("Error", "Could not log in.", "OK");
+                            });
 
 
                             Debug.WriteLine("AC:Exception : " + eJson.Message);
@@ -146,14 +153,18 @@ namespace Packet_Sender_Mobile
 
                     }
 
-                    await DisplayAlert("Error", "Did not find in packet sets.", "OK");
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await DisplayAlert("Error", "Did not find in packet sets.", "OK");
+                    });
                     return;
 
 
                 }
                 catch (HttpRequestException eHttp)
                 {
-                    await DisplayAlert("Error", "Could not connect to cloud server.", "OK");
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await DisplayAlert("Error", "Could not connect to cloud server.", "OK");
+                    });
                     Debug.WriteLine("AC:Exception : " + eHttp.Message);
                     Debug.WriteLine("AC:Exception : " + eHttp.InnerException.Message);
                     return;
@@ -165,8 +176,10 @@ namespace Packet_Sender_Mobile
             {
                 if (password != passwordconfirm)
                 {
-                    await DisplayAlert("Error", "Passwords do not match", "OK");
-                    return;
+                    Device.BeginInvokeOnMainThread(async () => {
+                        await DisplayAlert("Error", "Passwords do not match", "OK");
+                    });
+                return;
                 }
 
             }

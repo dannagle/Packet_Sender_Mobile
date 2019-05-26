@@ -75,12 +75,20 @@ namespace Packet_Sender_Mobile
                 SettingsPage.UserEmail = un;
                 SettingsPage.UserPass = pw;
 
-				await DisplayAlert("Success", "Found " + _packetsjson.Count() + " packets", "OK");
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Success", "Found " + _packetsjson.Count() + " packets", "OK");
+                });
 
 				await Navigation.PopModalAsync();
             }
             else {
-                await DisplayAlert("Error", "Could not connect to packet sender.", "OK");
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await DisplayAlert("Error", "Could not connect to packet sender.", "OK");
+                });
 
             }
 

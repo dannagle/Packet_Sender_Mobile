@@ -1,9 +1,15 @@
+# Archive Notice
+Both the iOS and Android versions are being rewritten from scratch using native Android Studio and Xcode. The end result should be much nicer apps. As such, this Xamarin-based version has been archived. Feel free to browse.
+
+<!--- Commented out until new versions are ready
+
 # Packet Sender Mobile
 ![Packet Sender Logo](screenshots/pslogo128.png)
 
 The award-winning desktop app is now available for Android and iOS, and like its older desktop father, it is also open soruce! Packet Sender is an easy way to communicate with devices using UDP or TCP commands.
 
 Use Packet Sender Cloud to save/share/import packets from desktop to mobile.
+
 
 ## Purchase
 The mobile apps contain no ads, no analytics, no "Review me!" nags, no email list sign-ups, no notifications, and no IAPs. Also, it is open source with an extremely permissible license. For the small price, please support this project by purchasing.
@@ -13,6 +19,7 @@ The mobile apps contain no ads, no analytics, no "Review me!" nags, no email lis
 
 [![Packet Sender Google](screenshots/googleplaybadge.png)](https://play.google.com/store/apps/details?id=com.packetsender.mobile)
 
+-->
 
 ## Screenshots
 
